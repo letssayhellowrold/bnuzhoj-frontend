@@ -24,24 +24,21 @@ onMounted(() => {
   doInit();
 });
 
-// 防抖函数，避免瞬间调用过量的回调函数
-// app.vue写在script里面  main.js写在app挂在完之后
-const debounce = (fn, delay) => {
-  let timer;
-  return (...args) => {
+const debounce = (callback, delay) => {
+  let timer = null;
+  return function (...args) {
     if (timer) {
       clearTimeout(timer);
     }
     timer = setTimeout(() => {
-      fn(...args);
+      callback(...args);
     }, delay);
   };
 };
-
 const _ResizeObserver = window.ResizeObserver;
 window.ResizeObserver = class ResizeObserver extends _ResizeObserver {
   constructor(callback) {
-    callback = debounce(callback, 200);
+    callback = debounce(callback, 20);
     super(callback);
   }
 };
@@ -49,5 +46,6 @@ window.ResizeObserver = class ResizeObserver extends _ResizeObserver {
 
 <style>
 #app {
+  user-select: none;
 }
 </style>

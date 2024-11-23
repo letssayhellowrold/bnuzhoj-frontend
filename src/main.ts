@@ -7,5 +7,14 @@ import store from "./store";
 import ArcoVue from "@arco-design/web-vue";
 import "@arco-design/web-vue/dist/arco.css";
 import "@/access";
-
-createApp(App).use(ArcoVue).use(store).use(router).mount("#app");
+// 引入markdown组件
+import "bytemd/dist/index.css";
+// 美化 json 数据
+import VueJsonPretty from "vue-json-pretty";
+import "vue-json-pretty/lib/styles.css";
+createApp(App)
+  .use(ArcoVue)
+  .use(VueJsonPretty)
+  .use(store)
+  .use(router)
+  .mount("#app");

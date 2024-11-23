@@ -2,8 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type BaseResponse_boolean_ = {
-  code?: number;
-  data?: boolean;
+export type JudgeInfo = {
+  memory?: number;
   message?: string;
+  time?: number;
 };
