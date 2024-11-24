@@ -9,6 +9,7 @@ import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
 import QuestionsView from "@/views/question/QuestionsView.vue";
 import ViewQuestionView from "@/views/question/ViewQuestionView.vue";
 import SubmissionView from "@/views/question/QuestionSubmissionView.vue";
+import TestComponent from "@/views/TestComponent.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {

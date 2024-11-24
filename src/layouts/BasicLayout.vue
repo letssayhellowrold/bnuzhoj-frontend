@@ -1,5 +1,19 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import GlobalHeader from "@/components/GlobalHeader.vue";
+
+// 定义一个函数来创建并插入脚本
+const loadScript = () => {
+  const script = document.createElement("script");
+  script.async = true;
+  script.defer = true;
+  script.src =
+    "http://localhost:8080/api/application/embed?protocol=http&host=localhost:8080&token=6ea965f202a2b510";
+  document.head.appendChild(script);
+};
+
+// 使用onMounted钩子在组件挂载后调用loadScript函数
+onMounted(loadScript);
 </script>
 
 <template>
@@ -12,6 +26,7 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
         <router-view />
         <!-- 动态页面路由 -->
       </a-layout-content>
+
       <a-layout-footer class="footer">by caizj</a-layout-footer>
     </a-layout>
   </div>

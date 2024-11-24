@@ -12,9 +12,15 @@ import "bytemd/dist/index.css";
 // 美化 json 数据
 import VueJsonPretty from "vue-json-pretty";
 import "vue-json-pretty/lib/styles.css";
-createApp(App)
-  .use(ArcoVue)
-  .use(VueJsonPretty)
-  .use(store)
-  .use(router)
-  .mount("#app");
+
+// 创建Vue应用实例
+const app = createApp(App);
+
+// 使用插件和配置
+app.use(ArcoVue);
+app.use(VueJsonPretty);
+app.use(store);
+app.use(router);
+
+// 挂载Vue应用
+app.mount("#app");
