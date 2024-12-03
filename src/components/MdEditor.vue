@@ -39,7 +39,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
   mode: () => "split",
-  handleChange: (v: string) => {
+  handleChange: () => {
     // console.log(v);
   },
 });
