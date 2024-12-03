@@ -8,6 +8,7 @@ export type Post = {
   favourNum?: number;
   id?: number;
   isDelete?: number;
+  questionId?: number;
   tags?: string;
   thumbNum?: number;
   title?: string;

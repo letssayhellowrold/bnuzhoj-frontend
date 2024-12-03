@@ -1,11 +1,12 @@
 /* generated using openapi-typescript-codegen -- do not edit */
-
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BaseResponse_boolean_ } from "../models/BaseResponse_boolean_";
 import type { BaseResponse_int_ } from "../models/BaseResponse_int_";
 import type { BaseResponse_Page_PostVO_ } from "../models/BaseResponse_Page_PostVO_";
 import type { PostFavourAddRequest } from "../models/PostFavourAddRequest";
+import type { PostFavourCheckRequest } from "../models/PostFavourCheckRequest";
 import type { PostFavourQueryRequest } from "../models/PostFavourQueryRequest";
 import type { PostQueryRequest } from "../models/PostQueryRequest";
 import type { CancelablePromise } from "../core/CancelablePromise";
@@ -26,6 +27,27 @@ export class PostFavourControllerService {
       method: "POST",
       url: "/api/post_favour/",
       body: postFavourAddRequest,
+      errors: {
+        401: `Unauthorized`,
+        403: `Forbidden`,
+        404: `Not Found`,
+      },
+    });
+  }
+  /**
+   * checkHasFavoured
+   * @param postFavourCheckRequest postFavourCheckRequest
+   * @returns BaseResponse_boolean_ OK
+   * @returns any Created
+   * @throws ApiError
+   */
+  public static checkHasFavouredUsingPost(
+    postFavourCheckRequest: PostFavourCheckRequest
+  ): CancelablePromise<BaseResponse_boolean_ | any> {
+    return __request(OpenAPI, {
+      method: "POST",
+      url: "/api/post_favour/check_has_favoured",
+      body: postFavourCheckRequest,
       errors: {
         401: `Unauthorized`,
         403: `Forbidden`,

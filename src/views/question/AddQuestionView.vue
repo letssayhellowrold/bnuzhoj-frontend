@@ -229,10 +229,6 @@ const handleDelete = (index: number) => {
 const onContentChange = (value: string) => {
   form.value.content = value;
 };
-
-const onAnswerChange = (value: string) => {
-  form.value.answer = value;
-};
 </script>
 
 <style scoped>

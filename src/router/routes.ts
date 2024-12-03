@@ -8,8 +8,7 @@ import AddQuestionView from "@/views/question/AddQuestionView.vue";
 import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
 import QuestionsView from "@/views/question/QuestionsView.vue";
 import ViewQuestionView from "@/views/question/ViewQuestionView.vue";
-import SubmissionView from "@/views/question/QuestionSubmissionView.vue";
-import TestComponent from "@/views/TestComponent.vue";
+import QuestionSubmissionView from "@/views/question/QuestionSubmissionView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -81,7 +80,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: "/views/submission/:id",
     name: "提交信息",
-    component: SubmissionView, // 假设你的查看提交信息页面组件名为SubmissionView.vue
+    component: QuestionSubmissionView,
     props: true,
     meta: {
       access: ACCESS_ENUM.USER, // 假设只有用户可以查看提交信息

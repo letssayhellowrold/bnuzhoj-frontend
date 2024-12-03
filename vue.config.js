@@ -14,16 +14,6 @@ module.exports = defineConfig({
     client: {
       overlay: false,
     },
-    proxy: {
-      // 匹配所有到 /api 的请求
-      "/api": {
-        target: "http://example.com", // 目标服务器
-        changeOrigin: true, // 改变源
-        pathRewrite: {
-          "^/api": "", // 重写路径：移除路径中的 /api 部分
-        },
-      },
-    },
   },
   chainWebpack(config) {
     config.plugin("monaco").use(new MonacoWebpackPlugin());
