@@ -1,9 +1,9 @@
 import ACCESS_ENUM from "@/access/accessEnum";
 import { StoreOptions } from "vuex";
-import { UserControllerService } from "../../generated";
+import { UserControllerService } from "../../generated/user";
 
 // getters 获取对象的系列方法
-const getters = {};
+// const getters = {};
 
 export default {
   namespaced: true,
@@ -16,7 +16,8 @@ export default {
   }),
   // actions 执行异步操作并出发mutations的更改(异步)
   actions: {
-    async getLoginUser({ commit, state }, payload) {
+    // async getLoginUser({ commit, state }, payload) {
+    async getLoginUser({ commit, state }) {
       // 从远程获取登录信息
       const res = await UserControllerService.getLoginUserUsingGet();
       if (res.code === 0) {

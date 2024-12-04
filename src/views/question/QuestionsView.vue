@@ -56,11 +56,10 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from "vue";
 import {
-  Page_Question_,
   Question,
   QuestionControllerService,
   QuestionQueryRequest,
-} from "../../../generated";
+} from "../../../generated/question";
 import message from "@arco-design/web-vue/es/message";
 import * as querystring from "querystring";
 import { useRouter } from "vue-router";

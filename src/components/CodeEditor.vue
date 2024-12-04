@@ -68,7 +68,7 @@ onMounted(() => {
       enabled: true,
     },
     readOnly: false,
-    theme: "vs",
+    theme: "vs-dark",
     // lineNumbers: "off",
     // roundedSelection: false,
     // scrollBeyondLastLine: false,

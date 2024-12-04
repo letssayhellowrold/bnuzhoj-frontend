@@ -14,6 +14,7 @@ import highlight from "@bytemd/plugin-highlight";
 import { Editor } from "@bytemd/vue-next";
 import { withDefaults, defineProps } from "vue";
 import "katex/dist/katex.css";
+import "bytemd/dist/index.css";
 // 引入插件
 const plugins = [
   gfm(),

@@ -107,7 +107,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import MdEditor from "@/components/MdEditor.vue";
-import { QuestionControllerService } from "../../../generated";
+import { QuestionControllerService } from "../../../generated/question";
 import message from "@arco-design/web-vue/es/message";
 import { useRoute } from "vue-router";
 
@@ -182,7 +182,7 @@ onMounted(() => {
 });
 
 const doSubmit = async () => {
-  console.log(form.value);
+  // console.log(form.value);
   // 区分更新还是创建
   if (updatePage) {
     const res = await QuestionControllerService.updateQuestionUsingPost(

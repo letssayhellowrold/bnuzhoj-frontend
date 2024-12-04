@@ -56,9 +56,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from "vue";
 import {
-  QuestionSubmitControllerService,
+  QuestionControllerService,
   QuestionSubmitVO,
-} from "../../../generated";
+} from "../../../generated/question";
 import message from "@arco-design/web-vue/es/message";
 import { useRouter } from "vue-router";
 // 日期处理库
@@ -75,11 +75,10 @@ const searchParams = ref<QuestionSubmitVO>({
 });
 
 const loadData = async () => {
-  const res =
-    await QuestionSubmitControllerService.listQuestionSubmitByPageUsingPost(
-      searchParams.value
-    );
-  console.log(res);
+  const res = await QuestionControllerService.listQuestionSubmitByPageUsingPost(
+    searchParams.value
+  );
+  // console.log(res);
   if (res.code === 0) {
     dataList.value = res.data.records;
     total.value = res.data.total;

@@ -163,6 +163,11 @@
 import { computed, defineProps, onMounted, ref, withDefaults } from "vue";
 import { useStore } from "vuex"; // 引入useStore钩子
 import {
+  QuestionControllerService,
+  QuestionSubmitAddRequest,
+  QuestionVO,
+} from "../../../generated/question";
+import {
   PostAddRequest,
   PostControllerService,
   PostFavourCheckRequest,
@@ -170,11 +175,8 @@ import {
   PostQueryRequest,
   PostThumbCheckRequest,
   PostThumbControllerService,
-  QuestionControllerService,
-  QuestionSubmitAddRequest,
-  QuestionSubmitControllerService,
-  QuestionVO,
-} from "../../../generated";
+} from "../../../generated/post";
+
 import moment from "moment";
 import message from "@arco-design/web-vue/es/message";
 import CodeEditor from "@/components/CodeEditor.vue";
@@ -204,7 +206,7 @@ const store = useStore();
 const total = ref(0);
 
 const loginUser = computed(() => store.state.user.loginUser);
-console.log(loginUser.value);
+// console.log(loginUser.value);
 const initializePostLikesAndStars = async (postsData) => {
   // 使用 Promise.all 来并行处理所有帖子的请求
   return await Promise.all(
@@ -291,10 +293,10 @@ const submitPost = async () => {
     title: "你的提交", // 假设这是必需的
     tags: ["c++"], // 假设这是必需的
   };
-  console.log(postAddRequest);
+  // console.log(postAddRequest);
   try {
     const res = await PostControllerService.addPostUsingPost(postAddRequest);
-    console.log(res);
+    // console.log(res);
     if (res.code === 0) {
       message.success("发表成功");
       showPostEditor.value = false;
@@ -321,7 +323,7 @@ const doSubmit = async () => {
     return;
   }
 
-  const res = await QuestionSubmitControllerService.doQuestionSubmitUsingPost({
+  const res = await QuestionControllerService.doQuestionSubmitUsingPost({
     ...form.value,
     questionId: question.value.id,
   });
@@ -370,7 +372,7 @@ const onLikeChange = async (post) => {
       const res = await PostThumbControllerService.doThumbUsingPost({
         postId: post.id, // 帖子的ID
       });
-      console.log(res);
+      // console.log(res);
       if (res.code === 0) {
         // 处理成功逻辑
         post.like = true;

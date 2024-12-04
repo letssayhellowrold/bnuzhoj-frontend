@@ -39,7 +39,10 @@ input[type="password"]::-ms-clear {
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { UserControllerService, UserLoginRequest } from "../../../generated";
+import {
+  UserControllerService,
+  UserLoginRequest,
+} from "../../../generated/user";
 import message from "@arco-design/web-vue/es/message";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
