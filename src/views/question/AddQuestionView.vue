@@ -32,7 +32,7 @@
               size="large"
             />
           </a-form-item>
-          <a-form-item field="judgeConfig.memoryLimit" label="内存限制/MB">
+          <a-form-item field="judgeConfig.memoryLimit" label="内存限制/KB">
             <a-input-number
               v-model="form.judgeConfig.memoryLimit"
               placeholder="请输入内存限制"
@@ -41,7 +41,7 @@
               size="large"
             />
           </a-form-item>
-          <a-form-item field="judgeConfig.stackLimit" label="堆栈限制/MB">
+          <a-form-item field="judgeConfig.stackLimit" label="堆栈限制/KB">
             <a-input-number
               v-model="form.judgeConfig.stackLimit"
               placeholder="请输入堆栈限制"

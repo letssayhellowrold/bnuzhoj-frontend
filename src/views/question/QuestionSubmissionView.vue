@@ -28,6 +28,9 @@
       <template #questionId="{ record }">
         {{ record.questionId }}
       </template>
+      <template #userId="{ record }">
+        {{ record.userId }}
+      </template>
       <template #judgeInfo="{ record }">
         <div
           v-for="(info, index) in record.judgeInfo"
@@ -45,7 +48,7 @@
       <template #optional="{ record }">
         <a-space>
           <a-button type="primary" @click="toQuestionPage(record.questionId)">
-            重做
+            去做这道题
           </a-button>
         </a-space>
       </template>
@@ -105,6 +108,10 @@ const columns = [
   {
     title: "题号",
     slotName: "questionId",
+  },
+  {
+    title: "提交用户",
+    slotName: "userId",
   },
   {
     title: "提交时间",

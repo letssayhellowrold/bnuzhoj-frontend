@@ -8,7 +8,7 @@ const loadScript = () => {
   script.async = true;
   script.defer = true;
   script.src =
-    "http://localhost:8080/api/application/embed?protocol=http&host=localhost:8080&token=6ea965f202a2b510";
+    "http://localhost:8080/api/application/embed?protocol=http&host=localhost:8080&token=d4f17a66e4ebb3d1";
   document.head.appendChild(script);
 };
 

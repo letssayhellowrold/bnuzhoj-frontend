@@ -34,13 +34,17 @@
           </a-tab-pane>
           <a-tab-pane key="discussion" title="讨论区">
             <div v-if="posts.length > 0">
-              <div v-for="post in posts" :key="post.id">
-                <!--                <pre>{{ post }}</pre>-->
+              <div v-for="post in posts" :key="post.id" style="margin: 2vh 1vw">
                 <a-comment
+                  :title="post.title"
                   :author="post.user.userName"
                   :datetime="moment(post.updateTime).format('YYYY-MM-DD')"
                   :align="'left'"
                 >
+                  <template #title>
+                    <!-- 这里可以自定义作者的显示方式 -->
+                    <strong>{{ post.title }}</strong>
+                  </template>
                   <!-- 使用 avatar 插槽 -->
                   <template #avatar>
                     <a-avatar>
@@ -145,6 +149,24 @@
         <template v-if="activeTab === 'discussion'">
           <div :md="24" class="post-editor">
             <a-card title="发表帖子">
+              <a-form model="postForm" layout="inline">
+                <a-form-item
+                  field="title"
+                  label="标题"
+                  style="min-width: 240px"
+                >
+                  <a-input v-model="postForm.title" placeholder="请输入标题" />
+                </a-form-item>
+                <a-form-item field="tags" label="标签" style="min-width: 240px">
+                  <a-input-tag
+                    v-model="postForm.tags"
+                    mode="tags"
+                    placeholder="输入标签"
+                    allow-clear
+                    style="width: 100%"
+                  />
+                </a-form-item>
+              </a-form>
               <MdEditor
                 :value="newPostContent"
                 :handle-change="onPostContentChange"
@@ -255,6 +277,16 @@ const postQueryRequest = ref<PostQueryRequest>({
   userId: undefined, // 用户ID（如果需要特定用户的帖子）
 });
 
+interface PostForm {
+  title: string;
+  tags: string[];
+}
+
+const postForm = ref<PostForm>({
+  title: "",
+  tags: [],
+});
+
 const showPostEditor = ref(false);
 const newPostContent = ref("");
 
@@ -290,8 +322,8 @@ const submitPost = async () => {
   const postAddRequest: PostAddRequest = {
     questionId: question.value?.id,
     content: newPostContent.value,
-    title: "你的提交", // 假设这是必需的
-    tags: ["c++"], // 假设这是必需的
+    title: postForm.value.title, // 使用用户输入的标题
+    tags: postForm.value.tags, // 使用用户选择的标签
   };
   // console.log(postAddRequest);
   try {

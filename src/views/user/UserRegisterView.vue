@@ -9,6 +9,9 @@
       :model="form"
       @submit="handleSubmit"
     >
+      <a-form-item field="userName" label="用户名" validate-trigger="blur">
+        <a-input v-model="form.userName" placeholder="长度至少为 3 个字符" />
+      </a-form-item>
       <a-form-item field="userAccount" label="账号" validate-trigger="blur">
         <a-input v-model="form.userAccount" placeholder="长度至少为 5 个字符" />
       </a-form-item>
@@ -44,8 +47,8 @@
       <!--      </a-form-item>-->
       <a-form-item>
         <a-space>
-          <a-button type="primary" html-type="submit">Submit</a-button>
-          <a-button @click="$refs.formRef.resetFields()">Reset</a-button>
+          <a-button type="primary" html-type="submit">提交</a-button>
+          <a-button @click="$refs.formRef.resetFields()">重置</a-button>
         </a-space>
       </a-form-item>
     </a-form>
@@ -80,11 +83,16 @@ const form = reactive({
   checkPassword: "",
   userAccount: "",
   userPassword: "",
+  userName: "",
 } as UserRegisterRequest); // 规范化格式
 /*
 定义规则
 */
 const rules = {
+  userName: {
+    required: true,
+    message: "用户名不能为空",
+  },
   userAccount: [
     {
       required: true,
