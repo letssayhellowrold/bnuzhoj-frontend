@@ -68,7 +68,7 @@
               :label="`输入用例-${index}`"
               :key="index"
             >
-              <a-input
+              <a-textarea
                 v-model="judgeCaseItem.input"
                 placeholder="请输入测试输入用例"
               />
@@ -78,7 +78,7 @@
               :label="`输出用例-${index}`"
               :key="index"
             >
-              <a-input
+              <a-textarea
                 v-model="judgeCaseItem.output"
                 placeholder="请输入测试输出用例"
               />
@@ -142,10 +142,10 @@ const loadData = async () => {
     return;
   }
   const res = await QuestionControllerService.getQuestionByIdUsingGet(
-    id as any
+    id as unknown
   );
   if (res.code === 0) {
-    form.value = res.data as any;
+    form.value = res.data as unknown;
     // json 转 js 对象
     if (!form.value.judgeCase) {
       form.value.judgeCase = [
@@ -155,7 +155,7 @@ const loadData = async () => {
         },
       ];
     } else {
-      form.value.judgeCase = JSON.parse(form.value.judgeCase as any);
+      form.value.judgeCase = JSON.parse(form.value.judgeCase as unknown);
     }
     if (!form.value.judgeConfig) {
       form.value.judgeConfig = {
@@ -165,12 +165,12 @@ const loadData = async () => {
       };
     } else {
       // 解析为json对象
-      form.value.judgeConfig = JSON.parse(form.value.judgeConfig as any);
+      form.value.judgeConfig = JSON.parse(form.value.judgeConfig as unknown);
     }
     if (!form.value.tags) {
       form.value.tags = [];
     } else {
-      form.value.tags = JSON.parse(form.value.tags as any);
+      form.value.tags = JSON.parse(form.value.tags as unknown);
     }
   } else {
     message.error("加载失败，" + res.message);

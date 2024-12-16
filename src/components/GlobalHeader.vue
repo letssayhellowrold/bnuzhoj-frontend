@@ -26,8 +26,13 @@
     </a-col>
     <a-col flex="100px">
       <!-- 如果用户已登录，显示用户名 -->
-      <div v-if="isUserLoggedIn">
-        {{ store.state.user?.loginUser.userName }}
+      <div v-if="isUserLoggedIn" class="user-info">
+        <div style="width: 72px">
+          {{ store.state.user?.loginUser.userName }}
+        </div>
+        <a-button type="link" @click="logout" style="margin-left: 10px"
+          >注销</a-button
+        >
       </div>
       <!-- 如果用户未登录，显示登录和注册按钮 -->
       <a-space v-else>
@@ -44,11 +49,11 @@
 
 <script setup lang="ts">
 import { routes } from "@/router/routes";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import checkAccess from "@/access/checkAccess";
-import ACCESS_ENUM from "@/access/accessEnum";
+import { UserControllerService } from "../../generated/user";
 
 const router = useRouter(); //路由组件
 // 获取全局状态信息
@@ -69,13 +74,6 @@ const visibleRoutes = computed(() => {
   });
 });
 
-// setTimeout(() => {
-//   store.dispatch("user/getLoginUser", {
-//     userName: "管理",
-//     userRole: ACCESS_ENUM.ADMIN,
-//   });
-// }, 3000);
-
 const doMenuClick = (key: string) => {
   // 传入路由跳转路径并通过push设置路径进行跳转
   router.push({ path: key });
@@ -85,7 +83,7 @@ const doMenuClick = (key: string) => {
 const selectedKeys = ref(["/"]); //默认高亮主页
 
 // 对每一次router进行的跳转,都在跳转后做一次检测,让当前的高亮变为前往的页面
-router.afterEach((to, from, failure) => {
+router.afterEach((to) => {
   selectedKeys.value = [to.path]; //to就是一个路由，他的path是一个属性
 });
 
@@ -94,6 +92,20 @@ const isUserLoggedIn = computed(() => {
   // console.log(store.state.user?.loginUser.userName);
   return store.state.user?.loginUser.userName !== "未登录";
 });
+
+// 注销逻辑
+const logout = () => {
+  UserControllerService.userLogoutUsingPost()
+    .then(() => {
+      // 注销成功后强制刷新页面
+      window.location.reload(true);
+      router.push("/");
+    })
+    .catch((error) => {
+      // 处理注销过程中可能出现的错误
+      console.error("Logout error:", error);
+    });
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -112,5 +124,9 @@ const isUserLoggedIn = computed(() => {
 .title {
   color: #444;
   margin-left: 16px;
+}
+.user-info {
+  display: flex;
+  align-items: center;
 }
 </style>

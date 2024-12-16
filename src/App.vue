@@ -45,7 +45,8 @@ window.ResizeObserver = class ResizeObserver extends _ResizeObserver {
 </script>
 
 <style>
+// 禁止复制，禁止选中整个页面
 #app {
-  user-select: none;
+  //user-select: none;
 }
 </style>
