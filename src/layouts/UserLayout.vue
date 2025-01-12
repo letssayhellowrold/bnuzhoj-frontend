@@ -13,7 +13,7 @@
         <router-view />
         <!-- 动态页面路由 -->
       </a-layout-content>
-      <a-layout-footer class="footer">by caizj</a-layout-footer>
+      <a-layout-footer class="footer">by Zejun Cai</a-layout-footer>
     </a-layout>
   </div>
 </template>

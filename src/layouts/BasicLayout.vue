@@ -8,7 +8,7 @@ const loadScript = () => {
   script.async = true;
   script.defer = true;
   script.src =
-    "http://localhost:8080/api/application/embed?protocol=http&host=localhost:8080&token=d4f17a66e4ebb3d1";
+    "http://localhost:8080/api/application/embed?protocol=http&host=localhost:8080&token=2e23870d14a7f1ba";
   document.head.appendChild(script);
 };
 
@@ -27,7 +27,7 @@ onMounted(loadScript);
         <!-- 动态页面路由 -->
       </a-layout-content>
 
-      <a-layout-footer class="footer">by caizj</a-layout-footer>
+      <a-layout-footer class="footer">by Zejun Cai</a-layout-footer>
     </a-layout>
   </div>
 </template>

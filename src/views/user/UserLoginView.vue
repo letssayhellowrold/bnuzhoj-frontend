@@ -6,6 +6,7 @@
       auto-label-width
       label-align="left"
       :model="form"
+      :rules="rules"
       @submit="handleSubmit"
     >
       <a-form-item field="userAccount" label="账号">
@@ -56,6 +57,21 @@ const form = reactive({
   userAccount: "",
   userPassword: "",
 } as UserLoginRequest); // 规范化格式
+
+const rules = {
+  userAccount: [
+    {
+      required: true,
+      message: "账号不能为空",
+    },
+  ],
+  userPassword: [
+    {
+      required: true,
+      message: "密码不能为空",
+    },
+  ],
+};
 /*
 提交表单
  */
