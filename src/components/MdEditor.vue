@@ -37,7 +37,7 @@ interface Props {
 /**
  * 给组件指定初始值
  */
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   value: () => "",
   mode: () => "split",
   handleChange: () => {
@@ -45,5 +45,3 @@ const props = withDefaults(defineProps<Props>(), {
   },
 });
 </script>
-
-<style scoped></style>
